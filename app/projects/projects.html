@@ -1,0 +1,36 @@
+﻿<section class="mainbar" data-ng-controller="projects as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="{{vm.title}}"></div>
+                        <div class="widget-content user">
+                            <div class="widget-content text-center text-info">
+                                <table class="table table-condensed table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Subtitle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="bld in vm.builds">
+                                            <td>{{bld.title}}</td>
+                                            <td>{{bld.subtitle}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--
+                            <div class="widget-foot">
+                                <div class="clearfix"></div>
+                            </div>
+                            -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

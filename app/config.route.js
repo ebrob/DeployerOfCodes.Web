@@ -30,12 +30,22 @@
                     }
                 }
             }, {
+                url: '/projects',
+                config: {
+                    title: 'projects',
+                    templateUrl: 'app/projects/projects.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-gear"></i> Projects'
+                    }
+                }
+            }, {
                 url: '/admin',
                 config: {
                     title: 'admin',
                     templateUrl: 'app/admin/admin.html',
                     settings: {
-                        nav: 2,
+                        nav: 3,
                         content: '<i class="fa fa-lock"></i> Admin'
                     }
                 }
