@@ -1,14 +1,14 @@
-(function () {
+(function() {
     'use strict';
 
     var serviceId = 'datacontext';
-    angular.module('app').factory(serviceId, ['common', datacontext]);
+    angular.module('app').factory(serviceId, ['common', '$http', datacontext]);
 
-    function datacontext(common) {
+    function datacontext(common, $http) {
         var $q = common.$q;
 
         var service = {
-            getPeople: getPeople,
+            getProjects: getProjectsFake,
             getMessageCount: getMessageCount
         };
 
@@ -16,17 +16,26 @@
 
         function getMessageCount() { return $q.when(72); }
 
-        function getPeople() {
+        function getProjectsFake() {
             var people = [
-                { firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida' },
-                { firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California' },
-                { firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York' },
-                { firstName: 'Madelyn', lastName: 'Green', age: 18, location: 'North Dakota' },
-                { firstName: 'Ella', lastName: 'Jobs', age: 18, location: 'South Dakota' },
-                { firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina' },
-                { firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming' }
+                { slug: 'project-1', title: 'Project One', subtitle: 'Subtitle One', rank: 1 },
+                { slug: 'project-2', title: 'Project Two', subtitle: 'Subtitle Two', rank: 3 },
+                { slug: 'project-3', title: 'Project Three', subtitle: 'Subtitle Three', rank: 2 },
             ];
             return $q.when(people);
+        }
+
+        function getProjects() {
+            $http.get('http://localhost:8090/projects/').
+                success(function(data, status, headers, config) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    return data;
+                }).
+                error(function(data, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
         }
     }
 })();

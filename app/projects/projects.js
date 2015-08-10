@@ -19,7 +19,8 @@
 
         function activate() {
             common.activateController([], controllerId)
-                .then(function() { log('Activated Projects View'); });
+                .then(function () { log('Activated Projects View'); });
+            common
         }
     }
 })();
